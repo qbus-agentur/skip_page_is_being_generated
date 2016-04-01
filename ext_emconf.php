@@ -1,11 +1,11 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = array(
-    'title' => 'Disable the 'Page is being generated' message',
-    'description' => '',
+    'title' => 'Disable "Page is being generated"',
+    'description' => 'Disables the "Page is being generated" message.',
     'category' => '',
-    'author' => '',
-    'author_email' => 'benjaminfranzke@googlemail.com',
+    'author' => 'Benjamin Franzke',
+    'author_email' => 'bfr@qbus.de',
     'state' => 'stable',
     'internal' => '',
     'uploadfolder' => '0',
