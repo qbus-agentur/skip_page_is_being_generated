@@ -1,8 +1,8 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = array(
-    'title' => 'Skip "Page is being generated"',
-    'description' => 'Disables the "Page is being generated" message.',
+    'title' => 'Disable the "Page is being generated" message',
+    'description' => 'Invalidates the timestamp of the "Page is being generated" message so that the TSFE always displays the actual page content.',
     'category' => '',
     'author' => 'Benjamin Franzke',
     'author_email' => 'bfr@qbus.de',
