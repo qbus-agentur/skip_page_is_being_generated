@@ -6,6 +6,7 @@ $EM_CONF[$_EXTKEY] = array(
     'category' => '',
     'author' => 'Benjamin Franzke',
     'author_email' => 'bfr@qbus.de',
+    'author_company' => 'Qbus Werbeagentur GmbH',
     'state' => 'stable',
     'internal' => '',
     'uploadfolder' => '0',
