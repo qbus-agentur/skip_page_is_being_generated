@@ -1,5 +1,5 @@
 <?php
-namespace Qbus\DisablePageIsBeingGenerated\Hooks;
+namespace Qbus\SkipPageIsBeingGenerated\Hooks;
 
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 

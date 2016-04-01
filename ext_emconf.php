@@ -1,7 +1,7 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = array(
-    'title' => 'Disable "Page is being generated"',
+    'title' => 'Skip "Page is being generated"',
     'description' => 'Disables the "Page is being generated" message.',
     'category' => '',
     'author' => 'Benjamin Franzke',
@@ -23,7 +23,7 @@ $EM_CONF[$_EXTKEY] = array(
     ),
     'autoload' => array(
         'psr-4' => array(
-            'Qbus\\DisablePageIsBeingGenerated\\' => 'Classes',
+            'Qbus\\SkipPageIsBeingGenerated\\' => 'Classes',
         ),
     ),
 );
