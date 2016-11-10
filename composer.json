@@ -1,0 +1,31 @@
+{
+    "name": "qbus/skip-page-is-being-generated",
+    "type": "typo3-cms-extension",
+    "description": "Disable the TYPO3 'Page is being generated'",
+    "keywords": [
+        "TYPO3",
+        "extension"
+    ],
+    "homepage": "https://www.qbus.de",
+    "authors": [
+        {
+            "name": "Benjamin Franzke",
+            "email": "bfr@qbus.de",
+            "role": "Developer",
+            "homepage": "https://www.qbus.de"
+        }
+    ],
+    "license": "GPL-2.0+",
+    "require": {
+        "typo3/cms-core": "~6.2.14|>=7.4.0,<8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Qbus\\SkipPageIsBeingGenerated\\": "Classes"
+        }
+    },
+    "replace": {
+        "skip_page_is_being_generated": "self.version",
+        "typo3-ter/skip-page-is-being-generated": "self.version"
+    }
+}
