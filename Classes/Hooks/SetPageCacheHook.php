@@ -26,6 +26,17 @@ class SetPageCacheHook
              * But lifetime '-1' will immediately invalidate the temporary cache entry,
              * which is enough, so that it is never used. */
             $params['lifetime'] = -1;
+
+            if ($frontend->getBackend() instanceof \TYPO3\CMS\Core\Cache\Backend\RedisBackend) {
+                /* The redis backend does not allow lifetime of -1, use 1 as a workaround.
+                 * That means the temporary record will be stored to cache, but as we set the
+                 * 'variable' to false, it is interpreted as unset in TSFE:
+                 * https://github.com/TYPO3/TYPO3.CMS/blob/8.5.1/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L2352 */
+                $params['lifetime'] = 1;
+                /* We may move `'variable' = false` out this if in a non-bugfix release,
+                 * but for now we leave it here to make sure we do not break things. */
+                $params['variable'] = false;
+            }
         }
     }
 }
