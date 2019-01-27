@@ -21,6 +21,18 @@ class SetPageCacheHook
             return;
         }
 
+        // TYPO3 v9 added none-page content to cache_pages, ignore those.
+        $ignoredIdentifiers = [
+            'redirects',
+            '-titleTag-',
+            '-metatag-',
+        ];
+        foreach ($ignoredIdentifiers as $ignored) {
+            if (strpos($params['entryIdentifier'], $ignored) !== false) {
+                return;
+            }
+        }
+
         if (isset($params['variable']['temp_content']) && $params['variable']['temp_content']) {
             /* We can't prevent temp_content ('Page is being generated') from going into cache.
              * But lifetime '-1' will immediately invalidate the temporary cache entry,
