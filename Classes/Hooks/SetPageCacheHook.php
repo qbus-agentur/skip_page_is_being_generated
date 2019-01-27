@@ -14,6 +14,7 @@ class SetPageCacheHook
     /**
      * @param array             $params
      * @param FrontendInterface $frontend
+     * @return void
      */
     public function set(&$params, $frontend)
     {
