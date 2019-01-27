@@ -18,20 +18,8 @@ class SetPageCacheHook
      */
     public function set(&$params, $frontend)
     {
-        if ($frontend->getIdentifier() !== 'cache_pages') {
+        if ($this->isPageCacheContent($params, $frontend) === false) {
             return;
-        }
-
-        // TYPO3 v9 added none-page content to cache_pages, ignore those.
-        $ignoredIdentifiers = [
-            'redirects',
-            '-titleTag-',
-            '-metatag-',
-        ];
-        foreach ($ignoredIdentifiers as $ignored) {
-            if (strpos($params['entryIdentifier'], $ignored) !== false) {
-                return;
-            }
         }
 
         if (isset($params['variable']['temp_content']) && $params['variable']['temp_content']) {
@@ -51,5 +39,31 @@ class SetPageCacheHook
                 $params['variable'] = false;
             }
         }
+    }
+
+    /**
+     * @param array             $params
+     * @param FrontendInterface $frontend
+     * @return bool
+     */
+    protected function isPageCacheContent($params, $frontend)
+    {
+        if ($frontend->getIdentifier() !== 'cache_pages') {
+            return false;
+        }
+
+        // TYPO3 v9 added none-page content to cache_pages, ignore those.
+        $ignoredIdentifiers = [
+            'redirects',
+            '-titleTag-',
+            '-metatag-',
+        ];
+        foreach ($ignoredIdentifiers as $ignored) {
+            if (strpos($params['entryIdentifier'], $ignored) !== false) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
