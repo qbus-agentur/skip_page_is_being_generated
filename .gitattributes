@@ -1,6 +1,5 @@
 /.gitattributes export-ignore
 /.gitignore export-ignore
-/.gitignore export-ignore
 /.php_cs export-ignore
 /.editorconfig export-ignore
 /phpunit.xml.dist export-ignore
