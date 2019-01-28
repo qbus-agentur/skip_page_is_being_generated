@@ -1,11 +1,11 @@
 <?php
 namespace Qbus\SkipPageIsBeingGenerated\Tests\Unit;
 
+use Prophecy\Prophecy\ObjectProphecy;
 use Qbus\SkipPageIsBeingGenerated\Hooks\SetPageCacheHook;
 use TYPO3\CMS\Core\Cache\Backend\RedisBackend;
 use TYPO3\CMS\Core\Cache\Backend\BackendInterface;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
-//use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -27,8 +27,9 @@ class SetPageCacheHookTest extends UnitTestCase
     protected $cacheBackendProphecy;
 
     /**
-     * @var params
+     * @var array
      */
+    protected $params = [];
 
     /**
      * @var SetPageCacheHook
@@ -50,7 +51,7 @@ class SetPageCacheHookTest extends UnitTestCase
      */
     protected $lifetime;
 
-    public function setUp()
+    public function setUp(): void
     {
         $cacheBackendProphecy = $this->prophesize();
         $cacheBackendProphecy->willImplement(BackendInterface::class);
@@ -82,65 +83,65 @@ class SetPageCacheHookTest extends UnitTestCase
         ];
     }
 
-    public function testSetInvalidatesLifetime()
+    public function testSetInvalidatesLifetime(): void
     {
         $this->hook->set($this->params, $this->cacheFrontendProphecy->reveal());
 
-        $this->assertEquals(-1, $this->lifetime);
+        static::assertEquals(-1, $this->lifetime);
     }
 
-    public function testSetInvalidatesLifetimeForRedis()
+    public function testSetInvalidatesLifetimeForRedis(): void
     {
         $this->cacheBackendProphecy->willExtend(RedisBackend::class);
 
         $this->hook->set($this->params, $this->cacheFrontendProphecy->reveal());
 
-        $this->assertEquals(1, $this->lifetime);
-        $this->assertFalse($this->variable);
+        static::assertEquals(1, $this->lifetime);
+        static::assertFalse($this->variable);
     }
 
-    public function testSetDoesNothingForNonTemporaryPageCache()
+    public function testSetDoesNothingForNonTemporaryPageCache(): void
     {
         unset($this->variable['temp_content']);
 
         $this->hook->set($this->params, $this->cacheFrontendProphecy->reveal());
 
-        $this->assertEquals(30, $this->lifetime);
+        static::assertEquals(30, $this->lifetime);
     }
 
-    public function testSetDoesNothingForNonPageCache()
+    public function testSetDoesNothingForNonPageCache(): void
     {
         $this->cacheFrontendProphecy->getIdentifier()->willReturn('cache_pagesection');
 
         $this->hook->set($this->params, $this->cacheFrontendProphecy->reveal());
 
-        $this->assertEquals(30, $this->lifetime);
+        static::assertEquals(30, $this->lifetime);
     }
 
-    public function testSetDoesNothingForRedirectsPageCache()
+    public function testSetDoesNothingForRedirectsPageCache(): void
     {
         $this->entryIdentifier = 'redirects';
 
         $this->hook->set($this->params, $this->cacheFrontendProphecy->reveal());
 
-        $this->assertEquals(30, $this->lifetime);
+        static::assertEquals(30, $this->lifetime);
     }
 
-    public function testSetDoesNothingForTitleTagPageCache()
+    public function testSetDoesNothingForTitleTagPageCache(): void
     {
         $this->entryIdentifier .= '-titleTag-record';
 
         $this->hook->set($this->params, $this->cacheFrontendProphecy->reveal());
 
-        $this->assertEquals(30, $this->lifetime);
+        static::assertEquals(30, $this->lifetime);
     }
 
-    public function testSetDoesNothingForMetatagPageCache()
+    public function testSetDoesNothingForMetatagPageCache(): void
     {
         $this->entryIdentifier .= '-metatag-html5';
 
         $this->hook->set($this->params, $this->cacheFrontendProphecy->reveal());
 
-        $this->assertEquals(30, $this->lifetime);
+        static::assertEquals(30, $this->lifetime);
     }
 }

@@ -33,7 +33,7 @@ script:
   - find . -name \*.php ! -path "./.build/*" -exec php -l {} >/dev/null \;
   - if [[ "$ANALYSIS" != 'true' ]]; then .build/vendor/bin/phpunit ; fi
   - if [[ "$ANALYSIS" == 'true' ]]; then .build/vendor/bin/phpunit --coverage-text --coverage-clover clover.xml ; fi
-  - .build/vendor/bin/phpstan analyze
+  - if [[ "$ANALYSIS" == 'true' ]]; then .build/vendor/bin/phpstan analyze ; fi
 
 after_success:
   - if [[ "$ANALYSIS" == 'true' ]]; then travis_retry .build/vendor/bin/php-coveralls -v ; fi

@@ -22,9 +22,11 @@
     "require-dev": {
         "typo3/testing-framework": "^2.0 || ^4.9",
         "phpspec/prophecy": "^1.8",
-        "phpstan/phpstan": "^0.10",
-        "phpstan/phpstan-strict-rules": "^0.10",
-        "saschaegerer/phpstan-typo3": "^0.10.0",
+        "phpstan/phpstan": "^0.9 || ^0.10",
+        "phpstan/phpstan-strict-rules": "^0.9 || ^0.10",
+        "saschaegerer/phpstan-typo3": "0.9.x-dev || ^0.10.0",
+        "phpstan/phpstan-phpunit": "^0.9 || ^0.10",
+        "jangregor/phpstan-prophecy": "^0.1 || ^0.3",
         "php-coveralls/php-coveralls": "^2.1"
     },
     "autoload": {

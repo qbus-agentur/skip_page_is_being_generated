@@ -1,8 +1,14 @@
 includes:
   - .build/vendor/saschaegerer/phpstan-typo3/extension.neon
   - .build/vendor/phpstan/phpstan-strict-rules/rules.neon
+  - .build/vendor/phpstan/phpstan-phpunit/extension.neon
+  - .build/vendor/jangregor/phpstan-prophecy/src/extension.neon
 
 parameters:
   level: max
+  ignoreErrors:
+    # phpstan-prophecy can not detect the implemented interface
+    - '^Parameter #2 \$frontend of method Qbus\\SkipPageIsBeingGenerated\\Hooks\\SetPageCacheHook::set()^'
   paths:
     - Classes
+    - Tests
