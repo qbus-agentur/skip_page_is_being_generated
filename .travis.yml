@@ -1,0 +1,39 @@
+sudo: false
+
+language: php
+
+dist: trusty
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.3
+      env:
+        - TYPO3_VERSION=typo3/cms-core:^9.5
+    - php: 7.2
+      env:
+        - TYPO3_VERSION=typo3/cms-core:^9.5
+        - ANALYSIS='true'
+    - php: 7.1
+      env: TYPO3_VERSION=typo3/cms-core:^8.7
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+before_install:
+  - if [[ "$ANALYSIS" != 'true' ]]; then if php -i | grep -q xdebug; then phpenv config-rm xdebug.ini; fi; fi
+  - composer self-update
+  - composer --version
+
+before_script:
+  - composer require --dev "$TYPO3_VERSION"
+
+script:
+  - find . -name \*.php ! -path "./.build/*" -exec php -l {} >/dev/null \;
+  - if [[ "$ANALYSIS" != 'true' ]]; then .build/vendor/bin/phpunit ; fi
+  - if [[ "$ANALYSIS" == 'true' ]]; then .build/vendor/bin/phpunit --coverage-text --coverage-clover clover.xml ; fi
+  - .build/vendor/bin/phpstan analyze
+
+after_success:
+  - if [[ "$ANALYSIS" == 'true' ]]; then travis_retry .build/vendor/bin/php-coveralls -v ; fi

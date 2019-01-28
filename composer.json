@@ -24,7 +24,8 @@
         "phpspec/prophecy": "^1.8",
         "phpstan/phpstan": "^0.10",
         "phpstan/phpstan-strict-rules": "^0.10",
-        "saschaegerer/phpstan-typo3": "^0.10.0"
+        "saschaegerer/phpstan-typo3": "^0.10.0",
+        "php-coveralls/php-coveralls": "^2.1"
     },
     "autoload": {
         "psr-4": {

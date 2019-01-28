@@ -1,6 +1,19 @@
 Disable the TYPO3 "Page is being generated" message
 ===================================================
 
+.. image:: https://scrutinizer-ci.com/g/qbus-agentur/skip_page_is_being_generated/badges/quality-score.png?b=master
+	:target: https://scrutinizer-ci.com/g/qbus-agentur/skip_page_is_being_generated/?branch=master
+	:alt: Scrutinizer Code Quality
+
+.. image:: https://api.travis-ci.org/qbus-agentur/skip_page_is_being_generated.png
+	:target: https://travis-ci.org/qbus-agentur/skip_page_is_being_generated
+	:alt: Build Status
+
+.. image:: https://coveralls.io/repos/github/qbus-agentur/skip_page_is_being_generated/badge.svg
+	:target: https://coveralls.io/github/qbus-agentur/skip_page_is_being_generated
+	:alt: Coverage Status
+
+
 This extension disables the "Page is being generated" message which is shown
 when two requests try to render the same page simultaneously.
 
