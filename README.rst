@@ -33,4 +33,4 @@ Just install:
 
 .. code-block:: bash
 
-   typo3/cli_dispath.phpsh extbase extension:install skip_page_is_being_generated
+   composer require qbus/skip-page-is-being-generated
