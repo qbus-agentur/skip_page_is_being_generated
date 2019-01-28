@@ -21,6 +21,7 @@
     },
     "require-dev": {
         "typo3/testing-framework": "^2.0 || ^4.9",
+        "phpspec/prophecy": "^1.8",
         "phpstan/phpstan": "^0.10",
         "phpstan/phpstan-strict-rules": "^0.10",
         "saschaegerer/phpstan-typo3": "^0.10.0"
@@ -28,6 +29,11 @@
     "autoload": {
         "psr-4": {
             "Qbus\\SkipPageIsBeingGenerated\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Qbus\\SkipPageIsBeingGenerated\\Tests\\": "Tests"
         }
     },
     "replace": {

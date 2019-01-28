@@ -3,4 +3,5 @@
 /.gitignore export-ignore
 /.php_cs export-ignore
 /.editorconfig export-ignore
+/phpunit.xml.dist export-ignore
 /phpstan.neon.dist export-ignore
