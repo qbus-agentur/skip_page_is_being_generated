@@ -14,6 +14,15 @@ Disable the TYPO3 "Page is being generated" message
 	:alt: Coverage Status
 
 
+Abandoned
+---------
+
+As of TYPO3 v8.7.25, v9.5.6 and v10.0 this extension is no longer
+required, as the behaviour of this extension has been merged_ into TYPO3.
+
+Description
+-----------
+
 This extension disables the "Page is being generated" message which is shown
 when two requests try to render the same page simultaneously.
 
@@ -34,3 +43,5 @@ Just install:
 .. code-block:: bash
 
    composer require qbus/skip-page-is-being-generated
+
+.. _merged: https://review.typo3.org/c/Packages/TYPO3.CMS/+/60656

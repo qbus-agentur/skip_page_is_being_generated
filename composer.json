@@ -2,6 +2,7 @@
     "name": "qbus/skip-page-is-being-generated",
     "type": "typo3-cms-extension",
     "description": "Disable the TYPO3 'Page is being generated'",
+    "abandoned": true,
     "keywords": [
         "TYPO3",
         "extension"
